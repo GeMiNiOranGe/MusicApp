@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="9dp"
+    android:layout_margin="7dp"
+    android:layout_marginBottom="15dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <FrameLayout
+            android:id="@+id/framelayouttheloaitheochude"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/ic_launcher_background"
+                android:scaleType="fitXY"
+                android:id="@+id/imageviewtheloaitheochude"
+                android:layout_width="180dp"
+                android:layout_height="180dp" />
+
+        </FrameLayout>
+        <TextView
+            android:textSize="15sp"
+            android:textColor="#000000"
+            android:text="Nhạc Việt Hot trong Tháng 5"
+            android:maxWidth="180dp"
+            android:lines="1"
+            android:gravity="center"
+            android:ellipsize="end"
+            android:id="@+id/textviewtheloaitheochude"
+            android:paddingRight="5dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

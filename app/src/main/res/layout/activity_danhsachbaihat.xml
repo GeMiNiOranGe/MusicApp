@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows ="true"
+    android:background="@color/white"
+    android:id="@+id/coordinatorlayout"
+    tools:context=".Activity.DanhsachbaihatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:fitsSystemWindows = "true"
+        android:id = "@+id/appbarlayout"
+        android:layout_width = "match_parent"
+        android:layout_height = "320dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            app:expandedTitleGravity = "center|top"
+            app:expandedTitleMarginTop = "10dp"
+            android:background = "@drawable/main_bg"
+            android:fitsSystemWindows = "true"
+            android:id="@+id/collapsingtoolbar"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content">
+            <View
+                android:background="@drawable/gradient_background_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbardanhsach"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:elevation="6dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"></androidx.appcompat.widget.Toolbar>
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="65dp"
+                android:layout_marginBottom="50dp"
+                app:cardCornerRadius="10dp"
+                >
+                <ImageView
+                    android:id="@+id/imageviewdanhsachcakhuc"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher" />
+            </androidx.cardview.widget.CardView>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:backgroundTint = "#a884de"
+        android:src = "@mipmap/ic_launcher_round"
+        android:scaleType="fitXY"
+        app:fabSize="normal"
+        android:id="@+id/floatingactionbutton"
+        app:layout_anchorGravity = "bottom|center"
+        app:layout_anchor = "@id/appbarlayout"
+        app:layout_behavior = "@string/bottom_sheet_behavior"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"/>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvNoDataDS"
+        android:text="Không có dữ liệu bài hát"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="450dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="50dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewdanhsachbaihat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

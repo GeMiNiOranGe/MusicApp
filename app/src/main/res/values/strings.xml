@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Music Player App</string>
+    <string name="tabview1">Home</string>
+    <string name="tabview2">Search</string>
+    <string name="tabview3">Album</string>
+    <string name="title_genre_home">Chủ đề và thể loại</string>
+    <string name="hello_blank_fragment">Album</string>
+</resources>
