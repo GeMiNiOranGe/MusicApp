@@ -11,7 +11,7 @@
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Mở trang đăng nhập (LoginActivity)
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intent = new Intent(MainActivity.this, AlbumActivity.class);
         startActivity(intent);
 
          //Đóng Activity hiện tại (MainActivity)

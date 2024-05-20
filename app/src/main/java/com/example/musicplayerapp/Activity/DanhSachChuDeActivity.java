@@ -25,12 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DanhSachChuDeActivity extends AppCompatActivity {
-
     RecyclerView recyclerViewtatcachude;
     Toolbar toolbartatcachude;
-
     DanhSachChuDeAdapter danhSachChuDeAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +36,8 @@ public class DanhSachChuDeActivity extends AppCompatActivity {
         init();
         GetData();
     }
-    private void GetData(){
+
+    private void GetData() {
         DataService dataservice = APIService.getService();
         Call<List<ChuDe>> callback = dataservice.GetAllChuDe();
         callback.enqueue(new Callback<List<ChuDe>>() {
@@ -47,7 +45,7 @@ public class DanhSachChuDeActivity extends AppCompatActivity {
             public void onResponse(Call<List<ChuDe>> call, Response<List<ChuDe>> response) {
                 ArrayList<ChuDe> mangchude = (ArrayList<ChuDe>) response.body();
                 danhSachChuDeAdapter = new DanhSachChuDeAdapter(DanhSachChuDeActivity.this, mangchude);
-                recyclerViewtatcachude.setLayoutManager(new GridLayoutManager(DanhSachChuDeActivity.this, 1 ));
+                recyclerViewtatcachude.setLayoutManager(new GridLayoutManager(DanhSachChuDeActivity.this, 1));
                 recyclerViewtatcachude.setAdapter(danhSachChuDeAdapter);
             }
 
@@ -58,9 +56,10 @@ public class DanhSachChuDeActivity extends AppCompatActivity {
         });
     }
 
-    private void init(){
+    private void init() {
         recyclerViewtatcachude = findViewById(R.id.recyclerviewAllChuDe);
         toolbartatcachude = findViewById(R.id.toolbarallchude);
+
         setSupportActionBar(toolbartatcachude);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Tất Cả Chủ Đề");

@@ -3,16 +3,15 @@
     <item
         android:id="@+id/bottom_home"
         android:icon="@drawable/baseline_home_24"
-        android:title="Home"
-        />
+        android:title="Home" />
+
     <item
         android:id="@+id/bottom_search"
         android:icon="@drawable/baseline_search_24"
-        android:title="Search"
-        />
+        android:title="Search" />
+
     <item
         android:id="@+id/bottom_album"
         android:icon="@drawable/baseline_library_music_24"
-        android:title="Album"
-        />
+        android:title="Album" />
 </menu>

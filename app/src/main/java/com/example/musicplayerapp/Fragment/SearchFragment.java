@@ -50,17 +50,17 @@ public class SearchFragment extends Fragment {
     ImageButton btnMicrophone;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search,container,false);
-        toolbar = view.findViewById(R.id.toolbarSearch);
-        toolbar.setTitle("");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_search, container, false);
+
         recyclerView = view.findViewById(R.id.rvSearch);
         tvNoData = view.findViewById(R.id.tvNoData);
         etSearch = view.findViewById(R.id.etSearch);
         btnMicrophone = view.findViewById(R.id.btnMicrophone);
+        toolbar = view.findViewById(R.id.toolbarSearch);
 
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setTitle("");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
         btnMicrophone.setOnClickListener(v -> startVoiceRecognition());
@@ -96,11 +96,14 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.search_view,menu);
+        inflater.inflate(R.menu.search_view, menu);
+
         MenuItem menuItem = menu.findItem(R.id.menuSearch);
         SearchView searchView = (SearchView) menuItem.getActionView();
+
         searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Search(query);
@@ -115,9 +118,9 @@ public class SearchFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void Search(String query){
+    private void Search(String query) {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetSearchBaiHat(query,LoginActivity.user);
+        Call<List<BaiHat>> callback = dataService.GetSearchBaiHat(query, LoginActivity.user);
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
