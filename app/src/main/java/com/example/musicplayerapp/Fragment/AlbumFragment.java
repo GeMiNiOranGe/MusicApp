@@ -29,42 +29,42 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AlbumFragment extends Fragment {
-
-
     public AlbumFragment() {
         // Required empty public constructor
     }
+
     View view;
     RecyclerView recyclerView;
-    TextView  txtxemthemalbum;
+    TextView txtxemthemalbum;
     AlbumAdapter albumAdapter;
+
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_album, container, false);
         recyclerView = view.findViewById(R.id.recyclerviewAlbum);
         txtxemthemalbum = view.findViewById(R.id.textviewxemthemAlbum);
-        txtxemthemalbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DanhSachAlbumActivity.class);
-                startActivity(intent);
-            }
+
+        txtxemthemalbum.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), DanhSachAlbumActivity.class);
+            startActivity(intent);
         });
+
         GetData();
-        return  view;
+        return view;
     }
 
     private void GetData() {
-        DataService dataService  = APIService.getService();
+        DataService dataService = APIService.getService();
         Call<List<Album>> callback = dataService.GetAlbumHot();
+
         callback.enqueue(new Callback<List<Album>>() {
             @Override
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 ArrayList<Album> albumArrayList = (ArrayList<Album>) response.body();
                 albumAdapter = new AlbumAdapter(getActivity(), albumArrayList);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+
                 linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setAdapter(albumAdapter);

@@ -19,16 +19,12 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //image slider
-        ImageSlider imageSlider = findViewById(R.id.imageSlider);
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.image1, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.image2, ScaleTypes.FIT));
-        imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
         bottomNavigationView.setSelectedItemId(R.id.bottom_home);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.bottom_home:
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
@@ -44,8 +40,9 @@ public class HomeActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
                     finish();
                     return true;
+                default:
+                    return false;
             }
-            return false;
         });
     }
 

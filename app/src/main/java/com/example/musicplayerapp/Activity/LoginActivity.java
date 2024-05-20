@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login_username, login_password;
     private Button login_button;
     private TextView signupRedirectText;
-    public static String user="";
+    public static String user = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
             String password = login_password.getText().toString();
 
             // Gọi phương thức kiểm tra đăng nhập
-             if (performLogin(username, password)) {
+            if (performLogin(username, password)) {
                 // Đăng nhập thành công
-                 // Đóng Activity hiện tại (LoginActivity)
-                 finish();
+                // Đóng Activity hiện tại (LoginActivity)
+                finish();
             }
 
         });

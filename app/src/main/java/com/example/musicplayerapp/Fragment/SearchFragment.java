@@ -36,32 +36,36 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SearchFragment extends Fragment {
-
     View view;
     Toolbar toolbar;
     RecyclerView recyclerView;
     TextView tvNoData;
     SearchAdapter searchAdapter;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search,container,false);
-        toolbar = view.findViewById(R.id.toolbarSearch);
-        toolbar.setTitle("");
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_search, container, false);
+
         recyclerView = view.findViewById(R.id.rvSearch);
         tvNoData = view.findViewById(R.id.tvNoData);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar = view.findViewById(R.id.toolbarSearch);
+
+        toolbar.setTitle("");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
         return view;
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.search_view,menu);
+        inflater.inflate(R.menu.search_view, menu);
+
         MenuItem menuItem = menu.findItem(R.id.menuSearch);
         SearchView searchView = (SearchView) menuItem.getActionView();
+
         searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Search(query);
@@ -75,21 +79,22 @@ public class SearchFragment extends Fragment {
         });
         super.onCreateOptionsMenu(menu, inflater);
     }
-    private void Search(String query){
+
+    private void Search(String query) {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetSearchBaiHat(query,LoginActivity.user);
+        Call<List<BaiHat>> callback = dataService.GetSearchBaiHat(query, LoginActivity.user);
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 ArrayList<BaiHat> mangbaihat = (ArrayList<BaiHat>) response.body();
-                if (mangbaihat.size()>0){
-                    searchAdapter = new SearchAdapter(getActivity(),mangbaihat);
+                if (mangbaihat.size() > 0) {
+                    searchAdapter = new SearchAdapter(getActivity(), mangbaihat);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setAdapter(searchAdapter);
                     tvNoData.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     tvNoData.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
                 }
