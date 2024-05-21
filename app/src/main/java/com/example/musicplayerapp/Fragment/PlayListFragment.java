@@ -38,17 +38,21 @@ public class PlayListFragment extends Fragment {
     TextView txttitleplaylist, txtviewxemthemplaylist;
     PlayListAdapter playListAdapter;
     ArrayList<PlayList> mangplaylist;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_playlist, container, false);
+
         lvplaylist = view.findViewById(R.id.listviewplaylist);
         txttitleplaylist = view.findViewById(R.id.textviewtitleplaylist);
         txtviewxemthemplaylist = view.findViewById(R.id.textviewmoreplaylist);
+
         txtviewxemthemplaylist.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), DanhSachPlayListActivity.class);
             startActivity(intent);
         });
+
         GetData();
         return view;
     }
@@ -77,6 +81,7 @@ public class PlayListFragment extends Fragment {
             }
         });
     }
+
     public void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
@@ -89,7 +94,7 @@ public class PlayListFragment extends Fragment {
         for (int i = 0; i < listAdapter.getCount(); i++) {
             View listItem = listAdapter.getView(i, null, listView);
 
-            if(listItem != null){
+            if (listItem != null) {
                 // This next line is needed before you call measure or else you won't get measured height at all. The listitem needs to be drawn first to know the height.
                 listItem.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
                 listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);

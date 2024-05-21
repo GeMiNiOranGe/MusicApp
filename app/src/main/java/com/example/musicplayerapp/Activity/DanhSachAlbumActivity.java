@@ -26,6 +26,7 @@ public class DanhSachAlbumActivity extends AppCompatActivity {
     RecyclerView recyclerViewAllAlbum;
     Toolbar toolbarAlbum;
     DanhSachAlbumAdapter danhSachAlbumAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +42,10 @@ public class DanhSachAlbumActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 ArrayList<Album> mangalbum = (ArrayList<Album>) response.body();
-                danhSachAlbumAdapter = new DanhSachAlbumAdapter(DanhSachAlbumActivity.this,mangalbum);
-                recyclerViewAllAlbum.setLayoutManager(new GridLayoutManager(DanhSachAlbumActivity.this,2));
+
+                danhSachAlbumAdapter = new DanhSachAlbumAdapter(DanhSachAlbumActivity.this, mangalbum);
+                recyclerViewAllAlbum.setLayoutManager(new GridLayoutManager(DanhSachAlbumActivity.this, 2));
+
                 recyclerViewAllAlbum.setAdapter(danhSachAlbumAdapter);
             }
 
@@ -53,8 +56,8 @@ public class DanhSachAlbumActivity extends AppCompatActivity {
         });
     }
 
-    private void init(){
-        recyclerViewAllAlbum =findViewById(R.id.recyclerviewAlbum);
+    private void init() {
+        recyclerViewAllAlbum = findViewById(R.id.recyclerviewAlbum);
         toolbarAlbum = findViewById(R.id.toolbaralbum);
         setSupportActionBar(toolbarAlbum);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

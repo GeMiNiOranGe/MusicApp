@@ -27,8 +27,11 @@ public class Fragment_dia_nhac extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_dia_nhac, container, false);
+
         circleImageView = view.findViewById(R.id.imageviewcircle);
+
         objectAnimator = ObjectAnimator.ofFloat(circleImageView, "rotation", 0f, 360f);
+
         objectAnimator.setDuration(10000);
         objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
         objectAnimator.setRepeatMode(ValueAnimator.RESTART);
@@ -37,15 +40,17 @@ public class Fragment_dia_nhac extends Fragment {
         return view;
 
     }
-    public void PauseOrPlay(String s){
-        if (s=="pause"){
+
+    public void PauseOrPlay(String s) {
+        if (s == "pause") {
             objectAnimator.pause();
         }
-        if (s=="play"){
+        if (s == "play") {
             objectAnimator.start();
 
         }
     }
+
     public void Playnhac(final String hinhanh) {
         Handler handler = new Handler();
         handler.postDelayed(() -> Picasso.get().load(hinhanh).into(circleImageView), 300);

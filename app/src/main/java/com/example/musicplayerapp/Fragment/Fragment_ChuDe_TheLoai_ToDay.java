@@ -46,6 +46,7 @@ public class Fragment_ChuDe_TheLoai_ToDay extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_chu_de_the_loai_to_day, container, false);
+
         horizontalScrollView = view.findViewById(R.id.horizontalScrollview);
         txtxemthemchudetheloai = view.findViewById(R.id.textviewxemthem);
 
