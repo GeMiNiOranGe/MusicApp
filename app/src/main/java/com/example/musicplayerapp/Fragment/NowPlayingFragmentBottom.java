@@ -83,7 +83,7 @@ public class NowPlayingFragmentBottom extends Fragment implements ServiceConnect
                         if(PATH_TO_FRAG != null) {
                             byte[] art = getAlbumArt(PATH_TO_FRAG);
                             if(art != null) Glide.with(getContext()).load(art).into(albumArt);
-                            else Glide.with(getContext()).load(R.drawable.image1).into(albumArt);
+                            else Glide.with(getContext()).load(R.drawable.baseline_play_circle).into(albumArt);
                             songName.setText(SONG_NAME_TO_FRAG);
                             artist.setText(ARTIST_TO_FRAG);
                         }
@@ -113,7 +113,7 @@ public class NowPlayingFragmentBottom extends Fragment implements ServiceConnect
             if(PATH_TO_FRAG != null) {
                 byte[] art = getAlbumArt(PATH_TO_FRAG);
                 if(art != null) Glide.with(getContext()).load(art).into(albumArt);
-                else Glide.with(getContext()).load(R.drawable.image1).into(albumArt);
+                else Glide.with(getContext()).load(R.drawable.baseline_play_circle).into(albumArt);
                 songName.setText(SONG_NAME_TO_FRAG);
                 artist.setText(ARTIST_TO_FRAG);
                 Intent intent = new Intent(getContext(), MusicService.class);

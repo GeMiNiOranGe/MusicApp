@@ -186,7 +186,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
         if(picture != null)
             thumb = BitmapFactory.decodeByteArray(picture, 0 , picture.length);
         else
-            thumb = BitmapFactory.decodeResource(getResources(), R.drawable.image1);
+            thumb = BitmapFactory.decodeResource(getResources(), R.drawable.baseline_play_circle);
         Notification notificaion = new NotificationCompat.Builder(this, CHANNEL_ID_2)
                 .setSmallIcon(playPauseBtn)
                 .setLargeIcon(thumb)

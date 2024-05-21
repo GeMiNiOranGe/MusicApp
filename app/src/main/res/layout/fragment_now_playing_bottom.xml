@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/image1"
+            android:src="@color/white"
             android:id="@+id/bottom_album_art"
             android:scaleType="centerCrop"/>
         <ImageView

@@ -420,7 +420,7 @@ public class PlayerActivity extends AppCompatActivity
             if (!isFinishing() && !isDestroyed()) {
                 Glide.with(this)
                         .asBitmap()
-                        .load(R.drawable.image1)
+                        .load(R.drawable.baseline_play_circle)
                         .into(cover_art);
             }
             ImageView gredient = findViewById(R.id.imageViewGredient);
