@@ -22,11 +22,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DanhSachPlayListActivity extends AppCompatActivity {
-
-
     Toolbar toolbar;
     RecyclerView recyclerViewdanhsachplaylist;
     DanhSachPlayListAdapter danhSachPlayListAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +35,7 @@ public class DanhSachPlayListActivity extends AppCompatActivity {
         GetData();
     }
 
-    private void GetData(){
+    private void GetData() {
         DataService dataService = APIService.getService();
         Call<List<PlayList>> callback = dataService.GetDanhSachPlayList();
         callback.enqueue(new Callback<List<PlayList>>() {
@@ -55,13 +54,13 @@ public class DanhSachPlayListActivity extends AppCompatActivity {
         });
     }
 
-    private void anhxa(){
+    private void anhxa() {
         toolbar = findViewById(R.id.toolbardanhsachplaylist);
         recyclerViewdanhsachplaylist = findViewById(R.id.recyclerviewdanhsachplaylist);
 
     }
 
-    private void init(){
+    private void init() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("PlayLists");

@@ -21,10 +21,13 @@ import com.example.musicplayerapp.R;
 public class ListSongFavoriteFragment extends Fragment {
     View view;
     LinearLayout linearLayout;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list_song_favorite, container, false);
+
         linearLayout = view.findViewById(R.id.itembaihatyeuthich);
+
         linearLayout.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), DanhsachbaihatActivity.class);
             intent.putExtra("iduser", LoginActivity.user);

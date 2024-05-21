@@ -1,62 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:gravity="center"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itembaihatyeuthich"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical">
+
     <TextView
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:gravity="center"
+        android:id="@+id/tiltebaihatyeuthich"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="15dp"
-        android:id="@+id/tiltebaihatyeuthich"
+        android:gravity="center"
         android:text="Bài hát Yêu Thích"
-        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_marginTop="5dp"
             android:id="@+id/imageviewbackgroundbaihatyeuthich"
-            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:src="@drawable/baihatyeuthich"/>
-        <View
-            android:background="@drawable/gredient_bg"
             android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/baihatyeuthich" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="170dp"/>
+            android:layout_height="170dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gredient_bg" />
+
         <ImageView
             android:id="@+id/imageviewbaihatyeuthich"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
             android:layout_alignBottom="@id/imageviewbackgroundbaihatyeuthich"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="10dp"
             android:elevation="6dp"
-            android:scaleType="fitXY"
-            android:layout_width="20dp"
-            android:layout_height="50dp"/>
+            android:scaleType="fitXY" />
+
         <TextView
-            android:textSize="20sp"
-            android:text="Bài hát yêu thích của bạn"
-            android:layout_alignBottom="@id/imageviewbaihatyeuthich"
-            android:layout_toRightOf="@id/imageviewbaihatyeuthich"
-            android:layout_marginLeft="13dp"
-            android:textStyle="bold"
-            android:textColor="#ffff"
             android:id="@+id/textviewtbaihatyeuthich"
-            android:maxLines="1"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="50dp"
-            android:ellipsize="end"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imageviewbaihatyeuthich"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@id/imageviewbaihatyeuthich"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Bài hát yêu thích của bạn"
+            android:textColor="#ffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 </LinearLayout>

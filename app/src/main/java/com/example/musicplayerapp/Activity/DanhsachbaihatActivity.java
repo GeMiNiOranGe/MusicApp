@@ -56,49 +56,51 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     Album album;
     String user;
     TextView tvNoData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danhsachbaihat);
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
         DateIntent();
         anhxa();
         init();
-        if(playList != null && !playList.getTenPlayList().equals("")){
+
+        if (playList != null && !playList.getTenPlayList().equals("")) {
             setValueInview(playList.getTenPlayList(), playList.getHinhNen());
             GetDataPlaylist(playList.getIdPlayList());
         }
-        if(theLoai != null && !theLoai.getTenTheLoai().equals("")){
+        if (theLoai != null && !theLoai.getTenTheLoai().equals("")) {
             setValueInview(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
             GetDataTheLoai(theLoai.getIdTheLoai());
-        }
-        else if(chuDe != null && !chuDe.getTenChuDe().equals("")){
+        } else if (chuDe != null && !chuDe.getTenChuDe().equals("")) {
             setValueInview(chuDe.getTenChuDe(), chuDe.getHinhChuDe());
             GetDataChuDe(chuDe.getIdChuDe());
-        }
-        else if(album != null && !album.getTenAlbum().equals("")){
+        } else if (album != null && !album.getTenAlbum().equals("")) {
             setValueInview(album.getTenAlbum(), album.getHinhAlbum());
             GetDataAlbum(album.getIdAlbum());
-        }
-        else if(user!=null){
+        } else if (user != null) {
             setValueInview("Bài hát yêu thích", "https://avatar-nct.nixcdn.com/topic/share/2016/08/23/a/7/4/b/1471930023672.jpg");
             GetDataBaiHatYeuThich();
         }
     }
+
     private void GetDataBaiHatYeuThich() {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatYeuThich(user,"yeuthich");
+        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatYeuThich(user, "yeuthich");
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 mangbaihat = (ArrayList<BaiHat>) response.body();
-                if (mangbaihat.size()>0){
+                if (mangbaihat.size() > 0) {
                     danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this, mangbaihat);
                     recyclerViewdanhsachbaihat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
                     recyclerViewdanhsachbaihat.setAdapter(danhsachbaihatAdapter);
                     eventClick();
-                }else{
+                } else {
                     tvNoData.setVisibility(View.VISIBLE);
                     recyclerViewdanhsachbaihat.setVisibility(View.GONE);
                 }
@@ -110,9 +112,10 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             }
         });
     }
+
     private void GetDataAlbum(String IdAlbum) {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatAlbum(IdAlbum,LoginActivity.user);
+        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatAlbum(IdAlbum, LoginActivity.user);
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
@@ -131,21 +134,22 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     }
 
     private void setValueInview(String ten, String hinhNen) {
-        try{
+        try {
             collapsingToolbarLayout.setTitle(ten);
             collapsingToolbarLayout.setExpandedTitleTextSize(60);
             URL url = new URL(hinhNen);
             Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
             collapsingToolbarLayout.setBackground(bitmapDrawable);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Picasso.get().load(hinhNen).into(imgdanhsachcakhuc);
     }
-    private void GetDataTheLoai (String IdTheLoai){
+
+    private void GetDataTheLoai(String IdTheLoai) {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatTheLoai(IdTheLoai,LoginActivity.user);
+        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatTheLoai(IdTheLoai, LoginActivity.user);
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
@@ -162,9 +166,10 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             }
         });
     }
+
     private void GetDataPlaylist(String IdPlayList) {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatPlayList(IdPlayList,LoginActivity.user);
+        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatPlayList(IdPlayList, LoginActivity.user);
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
@@ -181,9 +186,10 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             }
         });
     }
+
     private void GetDataChuDe(String IdChuDe) {
         DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatChuDe(IdChuDe,LoginActivity.user);
+        Call<List<BaiHat>> callback = dataService.GetDanhSachBaiHatChuDe(IdChuDe, LoginActivity.user);
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
@@ -200,7 +206,8 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             }
         });
     }
-    private void init(){
+
+    private void init() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // tạo click để trở về trang trước
         toolbar.setNavigationOnClickListener(v -> finish());
@@ -208,6 +215,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         floatingActionButton.setEnabled(false);
     }
+
     private void anhxa() {
         tvNoData = findViewById(R.id.tvNoDataDS);
         coordinatorLayout = findViewById(R.id.coordinatorlayout);
@@ -219,25 +227,23 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     }
 
     private void DateIntent() {
-        Intent intent  = getIntent();
-        if(intent !=  null){
-            if(intent.hasExtra("itemplaylist")){
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.hasExtra("itemplaylist")) {
                 playList = (PlayList) intent.getSerializableExtra("itemplaylist");
-            }
-            else if(intent.hasExtra("idtheloai")){
+            } else if (intent.hasExtra("idtheloai")) {
                 theLoai = (TheLoai) intent.getSerializableExtra("idtheloai");
-            }
-            else if(intent.hasExtra("idchude")){
+            } else if (intent.hasExtra("idchude")) {
                 chuDe = (ChuDe) intent.getSerializableExtra("idchude");
-            }
-            else if(intent.hasExtra("idalbum")){
+            } else if (intent.hasExtra("idalbum")) {
                 album = (Album) intent.getSerializableExtra("idalbum");
             }
-            if(intent.hasExtra("iduser")){
+            if (intent.hasExtra("iduser")) {
                 user = (String) intent.getSerializableExtra("iduser");
             }
         }
     }
+
     private void eventClick() {
         floatingActionButton.setEnabled(true);
         floatingActionButton.setOnClickListener(v -> {

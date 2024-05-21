@@ -33,6 +33,7 @@ public class DanhSachChuDeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_danh_sach_chu_de);
+
         init();
         GetData();
     }
